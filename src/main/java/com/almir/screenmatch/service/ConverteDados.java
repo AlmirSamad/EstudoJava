@@ -1,13 +1,13 @@
 package com.almir.screenmatch.service;
 
-import com.almir.screenmatch.model.DadosSerie;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ConverteDados implements IConverteDados {
-    private ObjectMapper mapper = new ObjectMapper();
+    final ObjectMapper mapper = new ObjectMapper();
 
     @Override
     public <T> T obterDados(String json, Class<T> classe) {
