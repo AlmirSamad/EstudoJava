@@ -1,6 +1,7 @@
 package com.almir.screenmatch.controller;
 
 
+import com.almir.screenmatch.dto.EpisodioDTO;
 import com.almir.screenmatch.dto.SerieDTO;
 import com.almir.screenmatch.service.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,15 @@ public class SerieController {
     @GetMapping("/{id}")
     public SerieDTO obterPorId(@PathVariable Long id){
         return service.obterPorId(id);
+    }
+
+    @GetMapping("/{id}/temporadas/todas")
+    public List<EpisodioDTO> obterTodasTemporadas(@PathVariable Long id){
+        return  service.obterTodasTemporadas(id);
+    }
+
+    @GetMapping("/{id}/temporadas/{numero}")
+    public  List<EpisodioDTO> obterEpisodioPorTemporada(@PathVariable Long id, @PathVariable Long numero){
+        return service.obterEpisodioPorTemporada(id, numero);
     }
 }
