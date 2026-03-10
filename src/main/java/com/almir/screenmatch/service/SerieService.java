@@ -2,6 +2,7 @@ package com.almir.screenmatch.service;
 
 import com.almir.screenmatch.dto.EpisodioDTO;
 import com.almir.screenmatch.dto.SerieDTO;
+import com.almir.screenmatch.model.Categoria;
 import com.almir.screenmatch.model.Serie;
 import com.almir.screenmatch.repository.SerieRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,5 +70,11 @@ public class SerieService {
                 .stream()
                 .map(e -> new EpisodioDTO(e.getTitulo(), e.getTemporada(), e.getEpisodio()))
                 .collect(Collectors.toList());
+    }
+
+    public List<SerieDTO> obterSeriePorCategoria(String nomeCategoria){
+        Categoria categoria = Categoria.fromPortugues(nomeCategoria);
+
+        return converterDados(serieRepository.findByGenero(categoria));
     }
 }
